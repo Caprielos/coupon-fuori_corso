@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="482.0" prefWidth="818.0" style="-fx-background-color: #A3A3A3;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.univaq.disim.oop.controller.LoginController">
+   <children>
+      <PasswordField fx:id="password" layoutX="315.0" layoutY="227.0" prefHeight="25.0" prefWidth="185.0" promptText="password" style="-fx-background-radius: 30;" />
+      <TextField fx:id="email" layoutX="327.0" layoutY="148.0" prefHeight="25.0" prefWidth="174.0" promptText="email" style="-fx-background-radius: 30;" />
+      <Button fx:id="singUp" layoutX="327.0" layoutY="375.0" mnemonicParsing="false" onAction="#signUpAction" prefHeight="25.0" prefWidth="174.0" style="-fx-background-color: transparent;" text="Non sei registrato? Clicca qui " textFill="#cb0eff" />
+      <Button fx:id="loginButton" layoutX="382.0" layoutY="297.0" mnemonicParsing="false" onAction="#loginAction" text="Button" />
+   </children>
+</AnchorPane>
