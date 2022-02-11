@@ -88,12 +88,12 @@ public class AllCouponController implements Initializable, DataInitializable<Ute
         infoButtonTableColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Coupon, Button>, ObservableValue<Button>>() {
             @Override
             public ObservableValue<Button> call(TableColumn.CellDataFeatures<Coupon, Button> couponButtonCellDataFeatures) {
-                Button infoButton = new Button("Info");
+                Button infoButton = new Button("Dettagli");
                 infoButton.setStyle("-fx-background-color:green; -fx-background-radius: 30; -fx-border-radius: 60 ; -fx-border-color: white; -fx-text-fill: white ");
                 infoButton.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent actionEvent) {
-                        dispatcher.renderView("descrizioneClienteCoupon", couponButtonCellDataFeatures.getValue());
+                        dispatcher.renderView("prenotaRistorante", couponButtonCellDataFeatures.getValue());
                     }
                 });
                 return new SimpleObjectProperty<Button>(infoButton);
