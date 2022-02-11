@@ -91,8 +91,6 @@ public class prenotaRistoranteController implements Initializable, DataInitializ
     void prenotaAction(ActionEvent event) {
 
 
-
-
     }
 
     @FXML
