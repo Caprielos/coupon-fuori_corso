@@ -2,6 +2,7 @@ package it.univaq.disim.oop.business.impl.ram;
 
 import it.univaq.disim.oop.business.BusinessException;
 import it.univaq.disim.oop.business.service.PrenotazioneService;
+import it.univaq.disim.oop.domain.Cliente;
 import it.univaq.disim.oop.domain.Prenotazione;
 
 import java.util.ArrayList;
@@ -17,4 +18,18 @@ public class RAMPrenotazioneService implements PrenotazioneService {
         prenotazione.setId(++id);
         prenotazioniList.add(prenotazione);
     }
+
+    @Override
+    public List<Prenotazione> cercaPrenotazioniPerCliente(Cliente cliente) throws BusinessException {
+        List<Prenotazione> result = new ArrayList<>();
+
+        for (Prenotazione prenotazione : prenotazioniList) {
+            if (cliente.getEmail().equalsIgnoreCase(prenotazione.getCliente().getEmail())) {
+                result.add(prenotazione);
+            }
+        }
+        return result;
+    }
+
+
 }

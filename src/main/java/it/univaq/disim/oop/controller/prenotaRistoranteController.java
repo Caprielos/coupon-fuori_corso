@@ -136,6 +136,15 @@ public class prenotaRistoranteController implements Initializable, DataInitializ
             }
         });
 
+
+        nomeCouponTextField.setEditable(false);
+        nomeRistoranteTextField.setEditable(false);
+        indirizzoRistoranteTextField.setEditable(false);
+        numeroCivicoRistoranteTextField.setEditable(false);
+        valoreScontoCouponTextField.setEditable(false);
+        descrizioneCouponArea.setEditable(false);
+
+
         numeroPersonePrenotazioneTextField.setVisible(false);
         dataPrenotazionePicker.setVisible(false);
         oreTextField.setVisible(false);
