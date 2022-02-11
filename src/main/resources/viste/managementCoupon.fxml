@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="552.0" prefWidth="751.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.univaq.disim.oop.controller.ManagementCouponController">
+   <children>
+      <Button fx:id="creaCouponButton" layoutX="501.0" layoutY="493.0" mnemonicParsing="false" onAction="#creaCoupon" prefHeight="30.0" prefWidth="153.0" text="Crea Coupon" />
+      <TableView fx:id="couponTableView" layoutX="14.0" layoutY="26.0" prefHeight="261.0" prefWidth="708.0">
+        <columns>
+          <TableColumn fx:id="nomeCouponTableColumn" prefWidth="64.0" text="Nome" />
+          <TableColumn fx:id="codeCouponTableColumn" prefWidth="77.0" text="Codice" />
+            <TableColumn fx:id="scontoCouponTableColumn" prefWidth="66.0" text="Sconto" />
+            <TableColumn fx:id="dataInizioCouponTableColumn" prefWidth="84.0" text="Data Inizio" />
+            <TableColumn fx:id="dataFineCouponTableColumn" prefWidth="78.0" text="Data Fine" />
+            <TableColumn fx:id="cancellaButtonTableColumn" prefWidth="84.0" text="Cancella" />
+            <TableColumn fx:id="quantitaCouponTableColumn" prefWidth="82.0" text="Quantità" />
+            <TableColumn fx:id="disponibilitàCouponTableColumn" prefWidth="96.0" text="Disponibilità" />
+            <TableColumn fx:id="infoButtonTableColumn" prefWidth="75.0" text="Info" />
+        </columns>
+      </TableView>
+      <TextField fx:id="nomeCouponTextFiled" layoutX="24.0" layoutY="378.0" promptText="Nome" />
+      <TextField fx:id="codiceCouponTextFiled" layoutX="24.0" layoutY="423.0" promptText="Codice" />
+      <DatePicker fx:id="dataInizioCouponTextFiled" layoutX="217.0" layoutY="378.0" promptText="Data Inizio" />
+      <DatePicker fx:id="dataFineCouponTextFiled" layoutX="216.0" layoutY="423.0" promptText="Data Fine" />
+      <TextField fx:id="scontoCouponTextFiled" layoutX="24.0" layoutY="468.0" promptText="Sconto" />
+      <TextField fx:id="quantitaCouponTextFiled" layoutX="216.0" layoutY="468.0" promptText="Quantità" />
+      <Text layoutX="304.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Crea Coupon" textAlignment="JUSTIFY" wrappingWidth="96.53668212890625">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <TextArea fx:id="descrizioneCouponArea" layoutX="491.0" layoutY="300.0" prefHeight="182.0" prefWidth="174.0" promptText="Descrizione" />
+   </children>
+</AnchorPane>

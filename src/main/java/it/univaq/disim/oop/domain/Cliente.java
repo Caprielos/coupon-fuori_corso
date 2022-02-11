@@ -1,5 +1,8 @@
 package it.univaq.disim.oop.domain;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Cliente extends Utente {
 
     private String nome;
@@ -20,4 +23,7 @@ public class Cliente extends Utente {
     public void setCognome(String cognome) {
         this.cognome = cognome;
     }
+
+    private Set<Coupon> couponSet = new HashSet<>();
+
 }

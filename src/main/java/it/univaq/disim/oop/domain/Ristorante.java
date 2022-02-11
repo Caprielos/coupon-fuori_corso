@@ -1,5 +1,8 @@
 package it.univaq.disim.oop.domain;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Ristorante extends Utente {
 
     private String nome;
@@ -29,4 +32,9 @@ public class Ristorante extends Utente {
     public void setNumeroCivico(String numeroCivico) {
         this.numeroCivico = numeroCivico;
     }
+
+    private Set<Coupon> couponSet = new HashSet<>();
+
+
+
 }

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="445.0" prefWidth="641.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.univaq.disim.oop.controller.AllCouponController">
+   <children>
+      <TableView fx:id="couponTableView" layoutX="127.0" layoutY="106.0" prefHeight="254.0" prefWidth="386.0">
+        <columns>
+          <TableColumn fx:id="nomeCouponTableColumn" prefWidth="101.5999755859375" text="Nome Coupon" />
+          <TableColumn fx:id="nomeRistoranteTableColumn" prefWidth="120.80003356933594" text="Nome Ristorante" />
+            <TableColumn fx:id="scontoTableColumn" prefWidth="82.40000915527344" text="Sconto" />
+            <TableColumn fx:id="infoButtonTableColumn" prefWidth="75.0" text="Info" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
