@@ -3,9 +3,9 @@ package it.univaq.disim.oop.controller;
 import it.univaq.disim.oop.business.BusinessException;
 import it.univaq.disim.oop.business.CouponBusinessFactory;
 import it.univaq.disim.oop.business.service.CouponService;
+import it.univaq.disim.oop.domain.Cliente;
 import it.univaq.disim.oop.domain.Coupon;
 import it.univaq.disim.oop.domain.Ristorante;
-import it.univaq.disim.oop.domain.Utente;
 import it.univaq.disim.oop.view.ViewDispatcher;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -25,7 +25,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class AllCouponController implements Initializable, DataInitializable<Utente> {
+public class AllCouponController implements Initializable, DataInitializable<Cliente> {
 
     @FXML
     private TableView<Coupon> couponTableView;
@@ -53,6 +53,8 @@ public class AllCouponController implements Initializable, DataInitializable<Ute
     private List<Coupon> couponList;
 
     private Ristorante ristorante;
+
+    private Cliente cliente;
 
     public AllCouponController() {
         factory = CouponBusinessFactory.getInstance();
@@ -93,6 +95,7 @@ public class AllCouponController implements Initializable, DataInitializable<Ute
                 infoButton.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent actionEvent) {
+                        couponButtonCellDataFeatures.getValue().setCliente(cliente);
                         dispatcher.renderView("prenotaRistorante", couponButtonCellDataFeatures.getValue());
                     }
                 });
@@ -103,12 +106,13 @@ public class AllCouponController implements Initializable, DataInitializable<Ute
     }
 
     @Override
-    public void initializeData(Utente utente) {
+    public void initializeData(Cliente cliente) {
+        this.cliente = cliente;
+
         try {
             couponList = couponService.cercaAllCoupon();
             ObservableList couponListData = FXCollections.observableArrayList(couponList);
             couponTableView.setItems(couponListData);
-
 
         } catch (BusinessException e) {
             e.printStackTrace();

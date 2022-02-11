@@ -6,7 +6,10 @@ import java.util.Set;
 public class Cliente extends Utente {
 
     private String nome;
+
     private String cognome;
+
+    private String coupon;
 
     public String getNome() {
         return nome;
@@ -26,4 +29,19 @@ public class Cliente extends Utente {
 
     private Set<Coupon> couponSet = new HashSet<>();
 
+    public String getCoupon() {
+        return coupon;
+    }
+
+    public void setCoupon(String coupon) {
+        this.coupon = coupon;
+    }
+
+    public Set<Coupon> getCouponSet() {
+        return couponSet;
+    }
+
+    public void setCouponSet(Set<Coupon> couponSet) {
+        this.couponSet = couponSet;
+    }
 }

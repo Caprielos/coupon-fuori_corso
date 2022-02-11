@@ -103,6 +103,7 @@ public class ManagementCouponController implements Initializable, DataInitializa
         try {
             Coupon coupon = new Coupon();
             coupon.setNome(nomeCouponTextFiled.getText());
+            System.out.println("Nome Coupon" + coupon.getNome());
             coupon.setCodice(codiceCouponTextFiled.getText());
             coupon.setSconto(Integer.parseInt(scontoCouponTextFiled.getText()));
             coupon.setDataInizio(dataInizioCouponTextFiled.getValue());

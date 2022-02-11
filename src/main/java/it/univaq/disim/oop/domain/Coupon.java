@@ -5,15 +5,27 @@ import java.time.LocalDate;
 public class Coupon {
 
     private int id;
+
     private String nome;
+
     private String codice;
+
     private LocalDate dataInizio;
+
     private LocalDate dataFine;
+
     private boolean disponibilità;
+
     private Ristorante ristorante;
+
+    private Cliente cliente;
+
     private int sconto;
+
     private int quantita;
+
     private String descrizione;
+
 
     public int getId() {
         return id;
@@ -93,5 +105,13 @@ public class Coupon {
 
     public void setDescrizione(String descrizione) {
         this.descrizione = descrizione;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 }
