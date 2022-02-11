@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="496.0" prefWidth="710.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.univaq.disim.oop.controller.PrenotazioniClienteController">
+   <children>
+      <Text layoutX="280.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Le Mie Prenotazioni" textAlignment="JUSTIFY" wrappingWidth="146.13673400878906">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <SplitPane dividerPositions="0.29797979797979796" layoutX="-2.0" layoutY="53.0" prefHeight="442.0" prefWidth="710.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <ListView fx:id="prenotazioniList" prefHeight="442.0" prefWidth="208.0" />
+               </children></AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <AnchorPane layoutX="-214.0" layoutY="-4.0" prefHeight="442.0" prefWidth="710.0">
+                     <children>
+                        <Text layoutX="362.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prenotazione Selezionata" wrappingWidth="183.73675537109375">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="227.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data prenotazione" wrappingWidth="120.53668212890625">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Text>
+                        <DatePicker fx:id="prenotazioniPicker" layoutX="348.0" layoutY="78.0" />
+                        <Text layoutX="227.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Orario prenotazione" wrappingWidth="135.7366943359375">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="oreTextField" layoutX="392.0" layoutY="134.0" prefHeight="26.0" prefWidth="43.0" />
+                        <TextField fx:id="minutiTextField" layoutX="455.0" layoutY="134.0" prefHeight="26.0" prefWidth="43.0" />
+                        <Text layoutX="436.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" text=":" textAlignment="CENTER" wrappingWidth="19.40155029296875">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="228.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Stato prenotazione">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="statoTextField" layoutX="371.0" layoutY="198.0" />
+                        <Text layoutX="236.0" layoutY="278.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Codice coupon" wrappingWidth="117.66699218750011">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="codiceTextField" layoutX="372.0" layoutY="260.0" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

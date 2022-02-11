@@ -1,10 +1,10 @@
 package it.univaq.disim.oop.controller;
 
+import it.univaq.disim.oop.business.BusinessException;
 import it.univaq.disim.oop.business.CouponBusinessFactory;
 import it.univaq.disim.oop.business.service.CouponService;
-import it.univaq.disim.oop.domain.Cliente;
-import it.univaq.disim.oop.domain.Coupon;
-import it.univaq.disim.oop.domain.Recensione;
+import it.univaq.disim.oop.business.service.PrenotazioneService;
+import it.univaq.disim.oop.domain.*;
 import it.univaq.disim.oop.view.ViewDispatcher;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -16,6 +16,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 
 import java.net.URL;
+import java.time.LocalTime;
 import java.util.ResourceBundle;
 
 public class prenotaRistoranteController implements Initializable, DataInitializable<Coupon> {
@@ -79,17 +80,36 @@ public class prenotaRistoranteController implements Initializable, DataInitializ
 
     private CouponService couponService;
 
+    private PrenotazioneService prenotazioneService;
+
     private CouponBusinessFactory factory;
 
     public prenotaRistoranteController() {
         factory = CouponBusinessFactory.getInstance();
         couponService = factory.getCouponService();
+        prenotazioneService = factory.getPrenotazioneService();
         dispatcher = ViewDispatcher.getInstance();
     }
 
     @FXML
     void prenotaAction(ActionEvent event) {
+        Prenotazione prenotazione = new Prenotazione();
 
+        try {
+            prenotazione.setRistorante(coupon.getRistorante());
+            prenotazione.setCliente(cliente);
+            prenotazione.setCoupon(coupon);
+            prenotazione.setStato(Stato.DA_VERIFICARE);
+
+            prenotazione.setNumeroPersone(Integer.parseInt(numeroPersonePrenotazioneTextField.getText()));
+            prenotazione.setLocalDate(dataPrenotazionePicker.getValue());
+            prenotazione.setLocalTime(LocalTime.parse(oreTextField.getText() + ":" + minutiTextField.getText()));
+
+            prenotazioneService.creaPrenotazione(prenotazione);
+
+        } catch (BusinessException e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -143,8 +163,6 @@ public class prenotaRistoranteController implements Initializable, DataInitializ
         descrizioneCouponArea.setText(coupon.getDescrizione());
 
         //QUA CI DEVO METTERE LE RECENSIONI
-
-
 
 
     }
