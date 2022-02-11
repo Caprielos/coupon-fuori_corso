@@ -5,15 +5,14 @@ import it.univaq.disim.oop.business.CouponBusinessFactory;
 import it.univaq.disim.oop.business.service.PrenotazioneService;
 import it.univaq.disim.oop.domain.Cliente;
 import it.univaq.disim.oop.domain.Prenotazione;
+import it.univaq.disim.oop.domain.Stato;
 import it.univaq.disim.oop.view.ViewDispatcher;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.util.Callback;
 
@@ -41,6 +40,20 @@ public class PrenotazioniClienteController implements Initializable, DataInitial
     @FXML
     private TextField statoTextField;
 
+    @FXML
+    private TextField indirizzoRistoranteTextField;
+
+    @FXML
+    private TextField nomeRistoranteTextField;
+
+    @FXML
+    private TextField numeroCivicoRistoranteTextField;
+
+    @FXML
+    private Button goToRestaurant;
+
+    private Prenotazione prenotazione1;
+
     private Cliente cliente;
 
     private List<Prenotazione> prenotazioneList;
@@ -58,14 +71,25 @@ public class PrenotazioniClienteController implements Initializable, DataInitial
     }
 
     @FXML
+    void goToRestaurant(ActionEvent event) {
+        prenotazione1.setStato(Stato.DA_VERIFICARE);
+        prenotazioniList.refresh();
+    }
+
+
+    @FXML
     void listAction(MouseEvent event) {
-        Prenotazione prenotazione1 = prenotazioniList.getSelectionModel().getSelectedItem();
+        prenotazione1 = prenotazioniList.getSelectionModel().getSelectedItem();
 
         prenotazioniPicker.setValue(prenotazione1.getLocalDate());
         oreTextField.setText(String.valueOf(prenotazione1.getLocalTime().getHour()));
         minutiTextField.setText(String.valueOf(prenotazione1.getLocalTime().getMinute()));
         statoTextField.setText(prenotazione1.getStato().toString());
         codiceTextField.setText(prenotazione1.getCoupon().getCodice());
+
+        nomeRistoranteTextField.setText(prenotazione1.getRistorante().getNome());
+        indirizzoRistoranteTextField.setText(prenotazione1.getRistorante().getIndirizzo());
+        numeroCivicoRistoranteTextField.setText(prenotazione1.getRistorante().getNumeroCivico());
 
     }
 
@@ -96,6 +120,9 @@ public class PrenotazioniClienteController implements Initializable, DataInitial
         statoTextField.setEditable(false);
         codiceTextField.setEditable(false);
 
+        nomeRistoranteTextField.setEditable(false);
+        indirizzoRistoranteTextField.setEditable(false);
+        numeroCivicoRistoranteTextField.setEditable(false);
 
     }
 

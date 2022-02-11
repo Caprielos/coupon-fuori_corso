@@ -4,6 +4,8 @@ import it.univaq.disim.oop.business.BusinessException;
 import it.univaq.disim.oop.business.service.PrenotazioneService;
 import it.univaq.disim.oop.domain.Cliente;
 import it.univaq.disim.oop.domain.Prenotazione;
+import it.univaq.disim.oop.domain.Ristorante;
+import it.univaq.disim.oop.domain.Stato;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +31,20 @@ public class RAMPrenotazioneService implements PrenotazioneService {
             }
         }
         return result;
+    }
+
+    @Override
+    public List<Prenotazione> cercaPrenotazioniPerRistorante(Ristorante ristorante) throws BusinessException {
+        List<Prenotazione> result = new ArrayList<>();
+
+        for (Prenotazione prenotazione : prenotazioniList) {
+            if (prenotazione.getStato().equals(Stato.DA_VERIFICARE) && prenotazione.getRistorante().getEmail().equalsIgnoreCase(ristorante.getEmail())) {
+                result.add(prenotazione);
+            }
+        }
+        return result;
+
+
     }
 
 

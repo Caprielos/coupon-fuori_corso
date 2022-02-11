@@ -23,7 +23,7 @@ public class LayoutController implements Initializable, DataInitializable<Utente
             new MenuElement("Prenotazioni", "prenotazioniCliente")};
 
     private static final MenuElement[] MENU_RISTORANTE = {new MenuElement("Gestione Coupon", "managementCoupon"),
-            new MenuElement("Gestione ", ""),};
+            new MenuElement("Prenotazioni", "prenotazioniRistorante"),};
 
 
     @FXML

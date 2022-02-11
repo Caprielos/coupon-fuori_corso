@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.SplitPane?>
@@ -30,36 +31,50 @@
                               <Font size="15.0" />
                            </font>
                         </Text>
-                        <Text layoutX="227.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data prenotazione" wrappingWidth="120.53668212890625">
+                        <Text layoutX="225.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data prenotazione" wrappingWidth="120.53668212890625">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Text>
-                        <DatePicker fx:id="prenotazioniPicker" layoutX="348.0" layoutY="78.0" />
-                        <Text layoutX="227.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Orario prenotazione" wrappingWidth="135.7366943359375">
+                        <DatePicker fx:id="prenotazioniPicker" layoutX="402.0" layoutY="55.0" prefHeight="25.0" prefWidth="161.0" />
+                        <Text layoutX="228.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Orario prenotazione" wrappingWidth="133.7366943359375">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Text>
-                        <TextField fx:id="oreTextField" layoutX="392.0" layoutY="134.0" prefHeight="26.0" prefWidth="43.0" />
-                        <TextField fx:id="minutiTextField" layoutX="455.0" layoutY="134.0" prefHeight="26.0" prefWidth="43.0" />
-                        <Text layoutX="436.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" text=":" textAlignment="CENTER" wrappingWidth="19.40155029296875">
+                        <TextField fx:id="oreTextField" layoutX="443.0" layoutY="93.0" prefHeight="26.0" prefWidth="43.0" />
+                        <TextField fx:id="minutiTextField" layoutX="524.0" layoutY="95.0" prefHeight="26.0" prefWidth="43.0" />
+                        <Text layoutX="487.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text=":" textAlignment="CENTER" wrappingWidth="19.40155029296875">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </Text>
-                        <Text layoutX="228.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Stato prenotazione">
+                        <Text layoutX="227.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Stato prenotazione">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Text>
-                        <TextField fx:id="statoTextField" layoutX="371.0" layoutY="198.0" />
-                        <Text layoutX="236.0" layoutY="278.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Codice coupon" wrappingWidth="117.66699218750011">
+                        <TextField fx:id="statoTextField" layoutX="416.0" layoutY="138.0" prefHeight="25.0" prefWidth="161.0" />
+                        <Text layoutX="227.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Codice coupon" wrappingWidth="117.66699218750011">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Text>
-                        <TextField fx:id="codiceTextField" layoutX="372.0" layoutY="260.0" />
+                        <TextField fx:id="codiceTextField" layoutX="416.0" layoutY="184.0" prefHeight="25.0" prefWidth="161.0" />
+                        <Button fx:id="goToRestaurant" layoutX="281.0" layoutY="389.0" mnemonicParsing="false" onAction="#goToRestaurant" prefHeight="25.0" prefWidth="161.0" text="Vado Al Ristorante" />
+                        <Text layoutX="227.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome ristorante" wrappingWidth="117.66699218750011">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="228.0" layoutY="283.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Indirizzo ristorante" wrappingWidth="133.7366943359375">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="nomeRistoranteTextField" layoutX="416.0" layoutY="228.0" prefHeight="25.0" prefWidth="161.0" />
+                        <TextField fx:id="indirizzoRistoranteTextField" layoutX="416.0" layoutY="265.0" prefHeight="25.0" prefWidth="161.0" />
+                        <TextField fx:id="numeroCivicoRistoranteTextField" layoutX="598.0" layoutY="265.0" prefHeight="25.0" prefWidth="43.0" />
                      </children>
                   </AnchorPane>
                </children>

@@ -106,6 +106,7 @@ public class prenotaRistoranteController implements Initializable, DataInitializ
             prenotazione.setLocalTime(LocalTime.parse(oreTextField.getText() + ":" + minutiTextField.getText()));
 
             prenotazioneService.creaPrenotazione(prenotazione);
+            dispatcher.renderView("prenotazioniCliente", cliente);
 
         } catch (BusinessException e) {
             e.printStackTrace();
