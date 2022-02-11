@@ -15,7 +15,7 @@
    <top>
       <HBox alignment="CENTER_LEFT" prefHeight="55.0" prefWidth="600.0" spacing="10.0" style="-fx-background-color: #ffffff;" BorderPane.alignment="CENTER">
          <children>
-            <Text fill="#822627" strokeType="OUTSIDE" strokeWidth="0.0" text="My Univaq" wrappingWidth="182.63671875">
+            <Text fill="#822627" strokeType="OUTSIDE" strokeWidth="0.0" text="CouponApp" wrappingWidth="182.63671875">
                <font>
                   <Font size="28.0" />
                </font>

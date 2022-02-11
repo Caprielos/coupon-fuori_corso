@@ -45,7 +45,7 @@ public class ViewDispatcher {
             layoutController = layoutView.getController();
             layoutController.initializeData(user);
             layout = (BorderPane) layoutView.getView();
-            //renderView("homeClient", user); //NO SCHERMATA HOME
+            renderView("home", user);
             scene = new Scene(layout);
             stage.setScene(scene);
         } catch (ViewException e) {

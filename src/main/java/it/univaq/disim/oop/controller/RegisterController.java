@@ -93,13 +93,27 @@ public class RegisterController implements Initializable, DataInitializable<Obje
                 this.cliente.setPassword(passwordField.getText());
 
                 dispatcher.logout();
+                utenteService.recordUser(this.cliente);
             }
-            utenteService.recordUser(this.cliente);
+
+            if (ristoranteBox.isSelected()) {
+                this.ristorante = new Ristorante();
+
+                this.ristorante.setIndirizzo(indirizzoRistoranteTextField.getText());
+                this.ristorante.setNome(nomeRistoranteTextField.getText());
+                this.ristorante.setNumeroCivico(numeroCivicoRistoranteTextField.getText());
+
+                this.ristorante.setEmail(emailTextField.getText());
+                this.ristorante.setUsername(usernameTextField.getText());
+                this.ristorante.setPassword(passwordField.getText());
+
+                dispatcher.logout();
+                utenteService.recordUser(this.ristorante);
+
+            }
         } catch (BusinessException e) {
             e.printStackTrace();
         }
-
-
     }
 
     @Override
