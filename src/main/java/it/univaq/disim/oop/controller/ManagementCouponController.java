@@ -132,6 +132,7 @@ public class ManagementCouponController implements Initializable, DataInitializa
                     public void handle(ActionEvent actionEvent) {
                         try {
                             couponService.cancellaCoupon(couponButtonCellDataFeatures.getValue());
+                            dispatcher.renderView("managementCoupon", ristorante);
                         } catch (BusinessException e) {
                             e.printStackTrace();
                         }
