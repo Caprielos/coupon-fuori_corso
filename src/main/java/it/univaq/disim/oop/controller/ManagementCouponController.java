@@ -19,6 +19,7 @@ import javafx.scene.control.*;
 import javafx.util.Callback;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -34,10 +35,10 @@ public class ManagementCouponController implements Initializable, DataInitializa
     private TableColumn<Coupon, String> codeCouponTableColumn;
 
     @FXML
-    private TableColumn<Coupon, String> dataFineCouponTableColumn;
+    private TableColumn<Coupon, LocalDate> dataFineCouponTableColumn;
 
     @FXML
-    private TableColumn<Coupon, String> dataInizioCouponTableColumn;
+    private TableColumn<Coupon, LocalDate> dataInizioCouponTableColumn;
 
     @FXML
     private TableColumn<Coupon, String> disponibilitàCouponTableColumn;
@@ -183,6 +184,21 @@ public class ManagementCouponController implements Initializable, DataInitializa
                 return new SimpleObjectProperty<>(couponIntegerCellDataFeatures.getValue().getQuantita());
             }
         });
+
+        dataInizioCouponTableColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Coupon, LocalDate>, ObservableValue<LocalDate>>() {
+            @Override
+            public ObservableValue<LocalDate> call(TableColumn.CellDataFeatures<Coupon, LocalDate> couponLocalDateCellDataFeatures) {
+                return new SimpleObjectProperty<>(couponLocalDateCellDataFeatures.getValue().getDataInizio());
+            }
+        });
+
+        dataFineCouponTableColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Coupon, LocalDate>, ObservableValue<LocalDate>>() {
+            @Override
+            public ObservableValue<LocalDate> call(TableColumn.CellDataFeatures<Coupon, LocalDate> couponLocalDateCellDataFeatures) {
+                return new SimpleObjectProperty<>(couponLocalDateCellDataFeatures.getValue().getDataFine());
+            }
+        });
+
 
     }
 
