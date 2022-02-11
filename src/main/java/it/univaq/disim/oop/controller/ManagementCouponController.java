@@ -148,7 +148,7 @@ public class ManagementCouponController implements Initializable, DataInitializa
                 infoButton.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent actionEvent) {
-                        dispatcher.renderView("", couponButtonCellDataFeatures.getValue());
+                        dispatcher.renderView("descrizioneCoupon", couponButtonCellDataFeatures.getValue());
                     }
                 });
                 return new SimpleObjectProperty<Button>(infoButton);
@@ -191,7 +191,7 @@ public class ManagementCouponController implements Initializable, DataInitializa
         this.ristorante = ristorante;
 
         try {
-            List<Coupon> couponList = couponService.cercaCouponPerRistorante(ristorante);
+            couponList = couponService.cercaCouponPerRistorante(ristorante);
             ObservableList couponListData = FXCollections.observableArrayList(couponList);
             couponTableView.setItems(couponListData);
         } catch (BusinessException e) {

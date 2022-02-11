@@ -13,4 +13,6 @@ public interface CouponService {
     void creaCoupon(Coupon coupon) throws BusinessException;
 
     void cancellaCoupon(Coupon coupon) throws BusinessException;
+
+    List<Coupon> cercaAllCoupon() throws BusinessException;
 }

@@ -36,5 +36,10 @@ public class RAMCouponService implements CouponService {
         magazine.remove(coupon);
     }
 
+    @Override
+    public List<Coupon> cercaAllCoupon() throws BusinessException {
+        return magazine;
+    }
+
 
 }
