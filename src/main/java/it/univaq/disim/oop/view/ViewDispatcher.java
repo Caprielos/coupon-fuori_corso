@@ -93,7 +93,7 @@ public class ViewDispatcher {
 
     public void signUp() {
         try {
-            Parent signUpView = loadView("signUp").getView();
+            Parent signUpView = loadView("register").getView();
             Scene scene = new Scene(signUpView);
             stage.setScene(scene);
         } catch (ViewException e) {

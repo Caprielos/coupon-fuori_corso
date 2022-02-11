@@ -62,8 +62,6 @@ public class LoginController implements Initializable, DataInitializable<Object>
         } catch (BusinessException e) {
             e.printStackTrace();
         }
-
-
     }
 
     @FXML
