@@ -126,7 +126,6 @@ public class PrenotazioniRistorantiController implements Initializable, DataInit
                 Recensione recensione = new Recensione();
                 recensione.setTesto("Si prega di inserire una recensione");
                 recensione.setCliente(prenotazione1.getCliente());
-                recensione.setRistorante(ristorante);
 
                 recensioniService.creaRecensione(recensione);
             } catch (BusinessException e) {

@@ -5,8 +5,6 @@ import it.univaq.disim.oop.business.CouponBusinessFactory;
 import it.univaq.disim.oop.business.service.RecensioniService;
 import it.univaq.disim.oop.domain.Cliente;
 import it.univaq.disim.oop.domain.Recensione;
-import it.univaq.disim.oop.domain.Ristorante;
-import it.univaq.disim.oop.domain.Utente;
 import it.univaq.disim.oop.view.ViewDispatcher;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -24,7 +22,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class RecensioniController implements Initializable, DataInitializable<Utente> {
+public class RecensioniController implements Initializable, DataInitializable<Cliente> {
 
     @FXML
     private ListView<Recensione> recensioniListView;
@@ -38,7 +36,6 @@ public class RecensioniController implements Initializable, DataInitializable<Ut
     @FXML
     private TextArea recenisioneAreaText;
 
-
     private ViewDispatcher dispatcher;
 
     private CouponBusinessFactory factory;
@@ -46,8 +43,6 @@ public class RecensioniController implements Initializable, DataInitializable<Ut
     private RecensioniService recensioniService;
 
     private Cliente cliente;
-
-    private Ristorante ristorante;
 
     private List<Recensione> recensioneList;
 
@@ -60,6 +55,11 @@ public class RecensioniController implements Initializable, DataInitializable<Ut
 
     @FXML
     void inviaRecensioneAction(ActionEvent event) {
+
+        Recensione recensione = new Recensione();
+        recensione.setTesto(recenisioneAreaText.getText());
+        recensione.setCliente(cliente);
+
 
     }
 
@@ -89,17 +89,10 @@ public class RecensioniController implements Initializable, DataInitializable<Ut
     }
 
     @Override
-    public void initializeData(Utente utente) {
+    public void initializeData(Cliente cliente) {
         try {
-            if (utente instanceof Cliente) {
-                this.cliente = (Cliente) utente;
-                recensioneList = recensioniService.cercaRecensioniPerCliente(cliente);
-
-            } else if (utente instanceof Ristorante) {
-                this.ristorante = (Ristorante) utente;
-                recensioneList = recensioniService.cercaRecensioniPerRistorante(ristorante);
-            }
-
+            this.cliente = cliente;
+            recensioneList = recensioniService.cercaRecensioniPerCliente(cliente);
             ObservableList recensioniData = FXCollections.observableArrayList(recensioneList);
             recensioniListView.setItems(recensioniData);
 
