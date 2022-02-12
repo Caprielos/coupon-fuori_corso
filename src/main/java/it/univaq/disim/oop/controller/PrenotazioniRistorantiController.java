@@ -4,6 +4,7 @@ import it.univaq.disim.oop.business.BusinessException;
 import it.univaq.disim.oop.business.CouponBusinessFactory;
 import it.univaq.disim.oop.business.service.CouponService;
 import it.univaq.disim.oop.business.service.PrenotazioneService;
+import it.univaq.disim.oop.business.service.RecensioniService;
 import it.univaq.disim.oop.domain.*;
 import it.univaq.disim.oop.view.ViewDispatcher;
 import javafx.beans.property.SimpleObjectProperty;
@@ -83,6 +84,8 @@ public class PrenotazioniRistorantiController implements Initializable, DataInit
 
     private CouponService couponService;
 
+    private RecensioniService recensioniService;
+
     private ViewDispatcher dispatcher;
 
     private CouponBusinessFactory factory;
@@ -91,6 +94,7 @@ public class PrenotazioniRistorantiController implements Initializable, DataInit
         factory = CouponBusinessFactory.getInstance();
         prenotazioneService = factory.getPrenotazioneService();
         couponService = factory.getCouponService();
+        recensioniService = factory.getRecensioniService();
         dispatcher = ViewDispatcher.getInstance();
     }
 
@@ -107,12 +111,10 @@ public class PrenotazioniRistorantiController implements Initializable, DataInit
 
     }
 
-
     @FXML
     void controllaClienteAction(ActionEvent event) {
         codiceClienteField.setText(codiceTextField.getText());
     }
-
 
     @FXML
     void verificaValiditaAction(ActionEvent event) {
@@ -120,16 +122,22 @@ public class PrenotazioniRistorantiController implements Initializable, DataInit
             resultLabel.setText("Codice Corretto");
             prenotazione1.setStato(Stato.VERIFICATO);
 
-            Recensione recensione = new Recensione();
+            try {
+                Recensione recensione = new Recensione();
+                recensione.setTesto("Si prega di inserire una recensione");
+                recensione.setCliente(prenotazione1.getCliente());
+                recensione.setRistorante(ristorante);
 
+                recensioniService.creaRecensione(recensione);
+            } catch (BusinessException e) {
+                e.printStackTrace();
+            }
 
         } else {
             resultLabel.setText("Codice Errato");
         }
 
-
     }
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -142,7 +150,7 @@ public class PrenotazioniRistorantiController implements Initializable, DataInit
                     protected void updateItem(Prenotazione item, boolean empty) {
                         super.updateItem(item, empty);
                         if (item != null) {
-                            setText("Ordine: " + item.getId() + "" + item.getId());
+                            setText("Prenotazione: " + item.getId() + "" + item.getId());
                         } else {
                             setText(null);
                         }

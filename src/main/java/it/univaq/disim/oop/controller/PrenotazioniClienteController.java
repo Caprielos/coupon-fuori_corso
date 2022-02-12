@@ -104,7 +104,7 @@ public class PrenotazioniClienteController implements Initializable, DataInitial
                     protected void updateItem(Prenotazione item, boolean empty) {
                         super.updateItem(item, empty);
                         if (item != null) {
-                            setText("Ordine: " + item.getId() + "" + item.getId());
+                            setText("Prenotazione: " + item.getId() + "" + item.getId());
                         } else {
                             setText(null);
                         }
