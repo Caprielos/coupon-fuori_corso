@@ -3,6 +3,7 @@ package it.univaq.disim.oop.business;
 import it.univaq.disim.oop.business.impl.ram.RAMCouponBusinessFactory;
 import it.univaq.disim.oop.business.service.CouponService;
 import it.univaq.disim.oop.business.service.PrenotazioneService;
+import it.univaq.disim.oop.business.service.RecensioniService;
 import it.univaq.disim.oop.business.service.UtenteService;
 
 public abstract class CouponBusinessFactory {
@@ -18,4 +19,6 @@ public abstract class CouponBusinessFactory {
     public abstract CouponService getCouponService();
 
     public abstract PrenotazioneService getPrenotazioneService();
+
+    public abstract RecensioniService getRecensioniService();
 }
