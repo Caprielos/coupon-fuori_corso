@@ -2,12 +2,14 @@ package it.univaq.disim.oop.controller;
 
 import it.univaq.disim.oop.business.BusinessException;
 import it.univaq.disim.oop.business.CouponBusinessFactory;
+import it.univaq.disim.oop.business.service.CouponService;
 import it.univaq.disim.oop.business.service.PrenotazioneService;
 import it.univaq.disim.oop.domain.Coupon;
 import it.univaq.disim.oop.domain.Prenotazione;
 import it.univaq.disim.oop.domain.Ristorante;
 import it.univaq.disim.oop.domain.Stato;
 import it.univaq.disim.oop.view.ViewDispatcher;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -57,7 +59,6 @@ public class PrenotazioniRistorantiController implements Initializable, DataInit
     @FXML
     private TextField minutiTextField;
 
-
     @FXML
     private TextField oreTextField;
 
@@ -79,7 +80,11 @@ public class PrenotazioniRistorantiController implements Initializable, DataInit
 
     private List<Prenotazione> prenotazioneList;
 
+    private List<Coupon> couponList;
+
     private PrenotazioneService prenotazioneService;
+
+    private CouponService couponService;
 
     private ViewDispatcher dispatcher;
 
@@ -88,6 +93,7 @@ public class PrenotazioniRistorantiController implements Initializable, DataInit
     public PrenotazioniRistorantiController() {
         factory = CouponBusinessFactory.getInstance();
         prenotazioneService = factory.getPrenotazioneService();
+        couponService = factory.getCouponService();
         dispatcher = ViewDispatcher.getInstance();
     }
 
@@ -176,7 +182,7 @@ public class PrenotazioniRistorantiController implements Initializable, DataInit
                     }
                 });
 
-                return null;
+                return new SimpleObjectProperty<Button>(controllaButton);
             }
         });
 
@@ -184,13 +190,17 @@ public class PrenotazioniRistorantiController implements Initializable, DataInit
 
     @Override
     public void initializeData(Ristorante ristorante) {
-
         this.ristorante = ristorante;
 
         try {
             prenotazioneList = prenotazioneService.cercaPrenotazioniPerRistorante(ristorante);
             ObservableList prenotazioneDataList = FXCollections.observableArrayList(prenotazioneList);
             prenotazioniList.setItems(prenotazioneDataList);
+
+            couponList = couponService.cercaCouponPerRistorante(ristorante);
+            ObservableList couponDataList = FXCollections.observableArrayList(couponList);
+            codeTableView.setItems(couponDataList);
+
         } catch (BusinessException e) {
             e.printStackTrace();
         }
