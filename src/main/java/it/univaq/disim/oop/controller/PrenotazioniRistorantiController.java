@@ -132,7 +132,6 @@ public class PrenotazioniRistorantiController implements Initializable, DataInit
             } catch (BusinessException e) {
                 e.printStackTrace();
             }
-
         } else {
             resultLabel.setText("Codice Errato");
         }

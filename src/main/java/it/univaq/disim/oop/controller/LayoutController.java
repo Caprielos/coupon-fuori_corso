@@ -20,10 +20,10 @@ public class LayoutController implements Initializable, DataInitializable<Utente
     private static final MenuElement MENU_HOME = new MenuElement("Home", "home");
 
     private static final MenuElement[] MENU_CLIENTE = {new MenuElement("Vedi Coupon", "allCoupon"),
-            new MenuElement("Prenotazioni", "prenotazioniCliente")};
+            new MenuElement("Prenotazioni", "prenotazioniCliente"), new MenuElement("Recensioni", "recensioni")};
 
     private static final MenuElement[] MENU_RISTORANTE = {new MenuElement("Gestione Coupon", "managementCoupon"),
-            new MenuElement("Prenotazioni", "prenotazioniRistorante"),};
+            new MenuElement("Prenotazioni", "prenotazioniRistorante"), new MenuElement("Recensioni", "recensioni")};
 
 
     @FXML

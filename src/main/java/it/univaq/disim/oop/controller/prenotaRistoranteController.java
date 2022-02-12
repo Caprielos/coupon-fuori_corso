@@ -4,8 +4,11 @@ import it.univaq.disim.oop.business.BusinessException;
 import it.univaq.disim.oop.business.CouponBusinessFactory;
 import it.univaq.disim.oop.business.service.CouponService;
 import it.univaq.disim.oop.business.service.PrenotazioneService;
+import it.univaq.disim.oop.business.service.RecensioniService;
 import it.univaq.disim.oop.domain.*;
 import it.univaq.disim.oop.view.ViewDispatcher;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -14,9 +17,11 @@ import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
+import javafx.util.Callback;
 
 import java.net.URL;
 import java.time.LocalTime;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class prenotaRistoranteController implements Initializable, DataInitializable<Coupon> {
@@ -76,11 +81,17 @@ public class prenotaRistoranteController implements Initializable, DataInitializ
 
     private Cliente cliente;
 
+    private Ristorante ristorante;
+
     private Coupon coupon;
+
+    private List<Recensione> recensioneList;
 
     private CouponService couponService;
 
     private PrenotazioneService prenotazioneService;
+
+    private RecensioniService recensioniService;
 
     private CouponBusinessFactory factory;
 
@@ -88,6 +99,7 @@ public class prenotaRistoranteController implements Initializable, DataInitializ
         factory = CouponBusinessFactory.getInstance();
         couponService = factory.getCouponService();
         prenotazioneService = factory.getPrenotazioneService();
+        recensioniService = factory.getRecensioniService();
         dispatcher = ViewDispatcher.getInstance();
     }
 
@@ -156,11 +168,30 @@ public class prenotaRistoranteController implements Initializable, DataInitializ
         text2.setVisible(false);
         text3.setVisible(false);
 
+        recensioniListView.setCellFactory(new Callback<ListView<Recensione>, ListCell<Recensione>>() {
+            @Override
+            public ListCell<Recensione> call(ListView<Recensione> param) {
+                ListCell<Recensione> cell = new ListCell<Recensione>() {
+                    @Override
+                    protected void updateItem(Recensione item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (item != null) {
+                            setText(item.getTesto());
+                        } else {
+                            setText(null);
+                        }
+                    }
+                };
+                return cell;
+            }
+        });
+
     }
 
     @Override
     public void initializeData(Coupon coupon) {
         this.coupon = coupon;
+        this.ristorante = coupon.getRistorante();
 
         this.cliente = coupon.getCliente();
 
@@ -173,6 +204,14 @@ public class prenotaRistoranteController implements Initializable, DataInitializ
         descrizioneCouponArea.setText(coupon.getDescrizione());
 
         //QUA CI DEVO METTERE LE RECENSIONI
+
+        try {
+            recensioneList = recensioniService.cercaRecensioniPerRistorante(ristorante);
+            ObservableList recensioniData = FXCollections.observableArrayList(recensioneList);
+            recensioniListView.setItems(recensioniData);
+        } catch (BusinessException e) {
+            e.printStackTrace();
+        }
 
 
     }
