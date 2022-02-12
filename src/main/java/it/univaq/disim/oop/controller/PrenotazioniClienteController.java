@@ -96,7 +96,7 @@ public class PrenotazioniClienteController implements Initializable, DataInitial
 
         try {
             Recensione recensione = new Recensione();
-            String nuova = "La mia recensione nel ristorante " + prenotazione1.getRistorante().getNome();
+            String nuova = "La mia recensione nel ristorante " + " " + prenotazione1.getRistorante().getNome();
             recensione.setTesto(nuova + recensioniAreaText.getText());
             recensione.setCliente(cliente);
             recensione.setRistorante(prenotazione1.getRistorante());

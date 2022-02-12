@@ -125,7 +125,7 @@ public class PrenotazioniRistorantiController implements Initializable, DataInit
             resultLabel.setText("Codice Corretto");
             prenotazione1.setStato(Stato.VERIFICATO);
             prenotazione1.setStato(Stato.CONSUMATO);
-            dispatcher.renderView("prenotazioniRistoranti", ristorante);
+            dispatcher.renderView("prenotazioniRistorante", ristorante);
         } else {
             resultLabel.setText("Codice Errato");
         }
