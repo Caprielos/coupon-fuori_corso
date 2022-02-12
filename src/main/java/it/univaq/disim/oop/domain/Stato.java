@@ -4,6 +4,7 @@ public enum Stato {
 
     DA_VERIFICARE,
     VERIFICATO,
+    CONSUMATO,
     NON_RIUSABILE,
 
 }

@@ -3,8 +3,10 @@ package it.univaq.disim.oop.controller;
 import it.univaq.disim.oop.business.BusinessException;
 import it.univaq.disim.oop.business.CouponBusinessFactory;
 import it.univaq.disim.oop.business.service.PrenotazioneService;
+import it.univaq.disim.oop.business.service.RecensioniService;
 import it.univaq.disim.oop.domain.Cliente;
 import it.univaq.disim.oop.domain.Prenotazione;
+import it.univaq.disim.oop.domain.Recensione;
 import it.univaq.disim.oop.domain.Stato;
 import it.univaq.disim.oop.view.ViewDispatcher;
 import javafx.collections.FXCollections;
@@ -14,6 +16,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
 import javafx.util.Callback;
 
 import java.net.URL;
@@ -52,6 +55,15 @@ public class PrenotazioniClienteController implements Initializable, DataInitial
     @FXML
     private Button goToRestaurant;
 
+    @FXML
+    private Text text1;
+
+    @FXML
+    private TextArea recensioniAreaText;
+
+    @FXML
+    private Button inviaRecensioneButton;
+
     private Prenotazione prenotazione1;
 
     private Cliente cliente;
@@ -60,6 +72,8 @@ public class PrenotazioniClienteController implements Initializable, DataInitial
 
     private PrenotazioneService prenotazioneService;
 
+    private RecensioniService recensioniService;
+
     private ViewDispatcher dispatcher;
 
     private CouponBusinessFactory factory;
@@ -67,6 +81,7 @@ public class PrenotazioniClienteController implements Initializable, DataInitial
     public PrenotazioniClienteController() {
         factory = CouponBusinessFactory.getInstance();
         prenotazioneService = factory.getPrenotazioneService();
+        recensioniService = factory.getRecensioniService();
         dispatcher = ViewDispatcher.getInstance();
     }
 
@@ -74,6 +89,24 @@ public class PrenotazioniClienteController implements Initializable, DataInitial
     void goToRestaurant(ActionEvent event) {
         prenotazione1.setStato(Stato.DA_VERIFICARE);
         prenotazioniList.refresh();
+    }
+
+    @FXML
+    void inviaRecensioneAction(ActionEvent event) {
+
+        try {
+            Recensione recensione = new Recensione();
+            String nuova = "La mia recensione nel ristorante " + prenotazione1.getRistorante().getNome();
+            recensione.setTesto(nuova + recensioniAreaText.getText());
+            recensione.setCliente(cliente);
+            recensione.setRistorante(prenotazione1.getRistorante());
+
+            recensioniService.creaRecensione(recensione);
+
+        } catch (BusinessException e) {
+            e.printStackTrace();
+        }
+
     }
 
 
@@ -90,6 +123,12 @@ public class PrenotazioniClienteController implements Initializable, DataInitial
         nomeRistoranteTextField.setText(prenotazione1.getRistorante().getNome());
         indirizzoRistoranteTextField.setText(prenotazione1.getRistorante().getIndirizzo());
         numeroCivicoRistoranteTextField.setText(prenotazione1.getRistorante().getNumeroCivico());
+
+        if (prenotazione1.getStato().equals(Stato.CONSUMATO)) {
+            text1.setVisible(true);
+            recensioniAreaText.setVisible(true);
+            inviaRecensioneButton.setVisible(true);
+        }
 
     }
 
@@ -123,6 +162,10 @@ public class PrenotazioniClienteController implements Initializable, DataInitial
         nomeRistoranteTextField.setEditable(false);
         indirizzoRistoranteTextField.setEditable(false);
         numeroCivicoRistoranteTextField.setEditable(false);
+
+        text1.setVisible(false);
+        recensioniAreaText.setVisible(false);
+        inviaRecensioneButton.setVisible(false);
 
     }
 

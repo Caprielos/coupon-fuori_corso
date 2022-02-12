@@ -8,14 +8,11 @@ import it.univaq.disim.oop.domain.Recensione;
 import it.univaq.disim.oop.view.ViewDispatcher;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
-import javafx.scene.control.TextArea;
-import javafx.scene.text.Text;
+import javafx.scene.input.MouseEvent;
 import javafx.util.Callback;
 
 import java.net.URL;
@@ -26,15 +23,6 @@ public class RecensioniController implements Initializable, DataInitializable<Cl
 
     @FXML
     private ListView<Recensione> recensioniListView;
-
-    @FXML
-    private Text Text1;
-
-    @FXML
-    private Button inviaRecensioneButton;
-
-    @FXML
-    private TextArea recenisioneAreaText;
 
     private ViewDispatcher dispatcher;
 
@@ -53,16 +41,11 @@ public class RecensioniController implements Initializable, DataInitializable<Cl
         dispatcher = ViewDispatcher.getInstance();
     }
 
+
     @FXML
-    void inviaRecensioneAction(ActionEvent event) {
-
-        Recensione recensione = new Recensione();
-        recensione.setTesto(recenisioneAreaText.getText());
-        recensione.setCliente(cliente);
-
+    void listAction(MouseEvent event) {
 
     }
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

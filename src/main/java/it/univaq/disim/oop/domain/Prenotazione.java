@@ -10,10 +10,19 @@ public class Prenotazione {
     private Coupon coupon;
     private Cliente cliente;
     private Ristorante ristorante;
+    private Recensione recensione;
 
     private int numeroPersone;
     private LocalDate localDate;
     private LocalTime localTime;
+
+    public Recensione getRecensione() {
+        return recensione;
+    }
+
+    public void setRecensione(Recensione recensione) {
+        this.recensione = recensione;
+    }
 
     public int getId() {
         return id;

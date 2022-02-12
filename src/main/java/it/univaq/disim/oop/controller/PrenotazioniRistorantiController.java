@@ -5,7 +5,10 @@ import it.univaq.disim.oop.business.CouponBusinessFactory;
 import it.univaq.disim.oop.business.service.CouponService;
 import it.univaq.disim.oop.business.service.PrenotazioneService;
 import it.univaq.disim.oop.business.service.RecensioniService;
-import it.univaq.disim.oop.domain.*;
+import it.univaq.disim.oop.domain.Coupon;
+import it.univaq.disim.oop.domain.Prenotazione;
+import it.univaq.disim.oop.domain.Ristorante;
+import it.univaq.disim.oop.domain.Stato;
 import it.univaq.disim.oop.view.ViewDispatcher;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -121,16 +124,8 @@ public class PrenotazioniRistorantiController implements Initializable, DataInit
         if (codiceRistoranteField.getText().equalsIgnoreCase(codiceClienteField.getText())) {
             resultLabel.setText("Codice Corretto");
             prenotazione1.setStato(Stato.VERIFICATO);
-
-            try {
-                Recensione recensione = new Recensione();
-                recensione.setTesto("Si prega di inserire una recensione");
-                recensione.setCliente(prenotazione1.getCliente());
-
-                recensioniService.creaRecensione(recensione);
-            } catch (BusinessException e) {
-                e.printStackTrace();
-            }
+            prenotazione1.setStato(Stato.CONSUMATO);
+            dispatcher.renderView("prenotazioniRistoranti", ristorante);
         } else {
             resultLabel.setText("Codice Errato");
         }

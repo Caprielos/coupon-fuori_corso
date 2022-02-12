@@ -4,27 +4,28 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="496.0" prefWidth="710.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.univaq.disim.oop.controller.PrenotazioniClienteController">
+<AnchorPane prefHeight="551.0" prefWidth="784.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.univaq.disim.oop.controller.PrenotazioniClienteController">
    <children>
-      <Text layoutX="280.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Le Mie Prenotazioni" textAlignment="JUSTIFY" wrappingWidth="146.13673400878906">
+      <Text layoutX="318.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Le Mie Prenotazioni" textAlignment="JUSTIFY" wrappingWidth="146.13673400878906">
          <font>
             <Font size="16.0" />
          </font>
       </Text>
-      <SplitPane dividerPositions="0.29797979797979796" layoutX="-2.0" layoutY="53.0" prefHeight="442.0" prefWidth="710.0">
+      <SplitPane dividerPositions="0.29797979797979796" layoutX="-2.0" layoutY="53.0" prefHeight="499.0" prefWidth="784.0">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="498.0" prefWidth="186.0">
                <children>
-                  <ListView fx:id="prenotazioniList" onMouseClicked="#listAction" prefHeight="442.0" prefWidth="208.0" />
+                  <ListView fx:id="prenotazioniList" onMouseClicked="#listAction" prefHeight="498.0" prefWidth="230.0" />
                </children></AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="491.0" prefWidth="550.0">
                <children>
-                  <AnchorPane layoutX="-214.0" layoutY="-4.0" prefHeight="442.0" prefWidth="710.0">
+                  <AnchorPane layoutX="-214.0" layoutY="-4.0" prefHeight="502.0" prefWidth="759.0">
                      <children>
                         <Text layoutX="362.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prenotazione Selezionata" wrappingWidth="183.73675537109375">
                            <font>
@@ -61,7 +62,7 @@
                            </font>
                         </Text>
                         <TextField fx:id="codiceTextField" layoutX="416.0" layoutY="184.0" prefHeight="25.0" prefWidth="161.0" />
-                        <Button fx:id="goToRestaurant" layoutX="281.0" layoutY="389.0" mnemonicParsing="false" onAction="#goToRestaurant" prefHeight="25.0" prefWidth="161.0" text="Vado Al Ristorante" />
+                        <Button fx:id="goToRestaurant" layoutX="373.0" layoutY="321.0" mnemonicParsing="false" onAction="#goToRestaurant" prefHeight="25.0" prefWidth="161.0" text="Vado Al Ristorante" />
                         <Text layoutX="227.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome ristorante" wrappingWidth="117.66699218750011">
                            <font>
                               <Font size="14.0" />
@@ -75,6 +76,13 @@
                         <TextField fx:id="nomeRistoranteTextField" layoutX="416.0" layoutY="228.0" prefHeight="25.0" prefWidth="161.0" />
                         <TextField fx:id="indirizzoRistoranteTextField" layoutX="416.0" layoutY="265.0" prefHeight="25.0" prefWidth="161.0" />
                         <TextField fx:id="numeroCivicoRistoranteTextField" layoutX="598.0" layoutY="265.0" prefHeight="25.0" prefWidth="43.0" />
+                        <Text fx:id="text1" layoutX="265.0" layoutY="377.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Come è stata la tua esperienza? Se vuoi lascia una recensione!" wrappingWidth="435.99996337890616">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Text>
+                        <TextArea fx:id="recensioniAreaText" layoutX="265.0" layoutY="388.0" prefHeight="56.0" prefWidth="282.0" promptText="Inserisci qui la tua recensione" />
+                        <Button fx:id="inviaRecensioneButton" layoutX="598.0" layoutY="403.0" mnemonicParsing="false" onAction="#inviaRecensioneAction" text="Invia Recensione" />
                      </children>
                   </AnchorPane>
                </children>
