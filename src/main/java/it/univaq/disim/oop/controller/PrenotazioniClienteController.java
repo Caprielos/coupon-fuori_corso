@@ -64,6 +64,9 @@ public class PrenotazioniClienteController implements Initializable, DataInitial
     @FXML
     private Button inviaRecensioneButton;
 
+    @FXML
+    private Label labelOkey;
+
     private Prenotazione prenotazione1;
 
     private Cliente cliente;
@@ -100,6 +103,7 @@ public class PrenotazioniClienteController implements Initializable, DataInitial
             recensione.setTesto(nuova + recensioniAreaText.getText());
             recensione.setCliente(cliente);
             recensione.setRistorante(prenotazione1.getRistorante());
+            labelOkey.setText("Recensione inviata");
 
             recensioniService.creaRecensione(recensione);
 
@@ -128,7 +132,9 @@ public class PrenotazioniClienteController implements Initializable, DataInitial
             text1.setVisible(true);
             recensioniAreaText.setVisible(true);
             inviaRecensioneButton.setVisible(true);
+            goToRestaurant.setVisible(false);
         }
+
 
     }
 
